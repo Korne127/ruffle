@@ -53,6 +53,34 @@ export function applyStaticStyles(styleElement: HTMLStyleElement) {
             height: 100% !important;
         }`,
 
+        `@media (prefers-color-scheme: light) {
+            :host {
+                --background-color: white;
+                --background-transparent: #ffffff4c;
+                --context-menu-background-color: #fafafa;
+                --save-manager-second-background: #f2f2f2;
+                --hover-background-color: lightgray;
+                --text-color: black;
+                --save-manager-border: #bbbbbb
+                --save-manager-border-strong: #888888
+                --border-hover: #5c5c5c;
+            }
+        }`,
+
+        `@media (prefers-color-scheme: dark) {
+            :host {
+                --background-color: #111111;
+                --background-transparent: #1111114c;
+                --context-menu-background-color: #161616;
+                --save-manager-second-background: #1e1e1e;
+                --hover-background-color: #2c2c2c;
+                --text-color: white;
+                --save-manager-border: #454545
+                --save-manager-border-strong: #787878
+                --border-hover: #a4a4a4;
+            }
+        }`,
+
         `.hidden {
             display: none !important;
         }`,
@@ -140,6 +168,14 @@ export function applyStaticStyles(styleElement: HTMLStyleElement) {
             width: 100%;
             height: 100%;
             resize: none;
+            background: var(--background-color);
+            color: var(--text-color);
+            border: 1px solid gray;
+            border-radius: 2px;
+        }`,
+
+        `#panic-body textarea:hover {
+            border: 1px solid var(--border-hover);
         }`,
 
         `#panic ul {
@@ -180,7 +216,7 @@ export function applyStaticStyles(styleElement: HTMLStyleElement) {
             column-gap: 1em;
         }`,
 
-        `#message-overlay a, #message-overlay button {
+        `#message-overlay a, #continue-btn {
             cursor: pointer;
             background: var(--ruffle-blue);
             color: var(--ruffle-orange);
@@ -193,23 +229,8 @@ export function applyStaticStyles(styleElement: HTMLStyleElement) {
             margin: 2% 0;
         }`,
 
-        `#message-overlay a:hover, #message-overlay button:hover {
-            background: #ffffff4c;
-        }`,
-
-        `#continue-btn {
-             cursor: pointer;
-             background: var(--ruffle-blue);
-             color: var(--ruffle-orange);
-             border: 2px solid var(--ruffle-orange);
-             font-weight: bold;
-             font-size: 20px;
-             border-radius: 20px;
-             padding: 10px;
-        }`,
-
-        `#continue-btn:hover {
-            background: #ffffff4c;
+        `#message-overlay a:hover, #continue-btn:hover {
+            background: var(--background-transparent);
         }`,
 
         `#context-menu-overlay {
@@ -220,8 +241,7 @@ export function applyStaticStyles(styleElement: HTMLStyleElement) {
         }`,
 
         `#context-menu {
-            color: black;
-            background: #fafafa;
+            background: var(--context-menu-background-color);
             border: 1px solid gray;
             box-shadow: 0px 5px 10px -5px black;
             position: absolute;
@@ -235,7 +255,7 @@ export function applyStaticStyles(styleElement: HTMLStyleElement) {
         `#context-menu .menu-item {
             padding: 5px 10px;
             cursor: pointer;
-            color: black;
+            color: var(--text-color);
         }`,
 
         `#context-menu .menu-item.disabled {
@@ -244,12 +264,12 @@ export function applyStaticStyles(styleElement: HTMLStyleElement) {
         }`,
 
         `#context-menu .menu-item:not(.disabled):hover {
-            background: lightgray;
+            background: var(--hover-background-color);
         }`,
 
         `#context-menu .menu-separator hr {
             border: none;
-            border-bottom: 1px solid lightgray;
+            border-bottom: 1px solid var(--hover-background-color);
             margin: 2px;
         }`,
 
@@ -319,7 +339,8 @@ export function applyStaticStyles(styleElement: HTMLStyleElement) {
 
         `.modal-area {
             position: sticky;
-            background: white;
+            background: var(--background-color);
+            color: var(--text-color);
             width: fit-content;
             padding: 16px;
             border: 3px solid black;
@@ -361,7 +382,7 @@ export function applyStaticStyles(styleElement: HTMLStyleElement) {
         `.general-save-options {
             text-align: center;
             padding-bottom: 8px;
-            border-bottom: 2px solid #888;
+            border-bottom: 2px solid var(--save-manager-border-strong);
         }`,
 
         `#local-saves {
@@ -374,7 +395,7 @@ export function applyStaticStyles(styleElement: HTMLStyleElement) {
         }`,
 
         `#local-saves td {
-            border-bottom: 1px solid #bbb;
+            border-bottom: 1px solid var(--save-manager-border);
             height: 30px;
         }`,
 
@@ -384,7 +405,7 @@ export function applyStaticStyles(styleElement: HTMLStyleElement) {
         }`,
 
         `#local-saves tr:nth-child(even) {
-            background-color: #f2f2f2;
+            background-color: var(--save-manager-second-background);
         }`,
 
         `#video-holder {

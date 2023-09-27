@@ -399,19 +399,15 @@ export class RufflePlayer extends HTMLElement {
         muteCheckbox.checked = this.volumeSettings.isMuted;
         volumeSlider.disabled = muteCheckbox.checked;
         volumeSlider.valueAsNumber = this.volumeSettings.volume;
-        volumeSliderLabel.style.color = muteCheckbox.checked ? "grey" : "black";
-        volumeSliderText.style.color = muteCheckbox.checked ? "grey" : "black";
+        volumeSliderLabel.style.color = muteCheckbox.checked ? "grey" : "";
+        volumeSliderText.style.color = muteCheckbox.checked ? "grey" : "";
         volumeSliderText.textContent = String(this.volumeSettings.volume);
 
         // Add event listeners to update the settings and controls.
         muteCheckbox.addEventListener("change", () => {
             volumeSlider.disabled = muteCheckbox.checked;
-            volumeSliderLabel.style.color = muteCheckbox.checked
-                ? "grey"
-                : "black";
-            volumeSliderText.style.color = muteCheckbox.checked
-                ? "grey"
-                : "black";
+            volumeSliderLabel.style.color = muteCheckbox.checked ? "grey" : "";
+            volumeSliderText.style.color = muteCheckbox.checked ? "grey" : "";
             this.volumeSettings.isMuted = muteCheckbox.checked;
             this.instance?.set_volume(this.volumeSettings.get_volume());
         });
